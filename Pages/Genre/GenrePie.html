@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+
+
+<div class="container">
+    <div id='graphic'>
+        <div id='sections'>
+            <section class="step">
+               <p>A l'époque, nous retrouvions beaucoup de couple qui s'inscrivait ensemble. Surement pour des questions d'héritage</p>
+            </section>
+            <section class="step">
+                <p> Parfois, les couples et les familles ne souhaient pas s'enregistrer ensemble. Ce qui fait qu'on a beaucoup d'hommes.
+                Il se peut également que ces hommes n'avaient tout simplement pas de famille.</p>
+            </section>
+            <section class="step">
+                <p> Si une personne possèdait une famille ou un partenaire, il pouvait s'enregistrer avec eux. Ce qui créer un groupe "famille"</p>
+            </section>
+            <section class="step">
+                <p>   Dans les années 1800, peu de femmes possèdent des propriétés. Ce qui explique ce faible nombre.
+                Il se peut en plus que ces femmes aillent acquis par héritage ces terrains.</p>
+            </section>
+
+        </div>
+        <div id='pie'>
+    </div>
+</div>
+</div>
+</body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="../../Javascript/GenrePie.js"></script>
+
+
+<script>
+
+</script>
+
+
+
+</html>
+
+<style>
+
+p{
+    font-family: Arial;
+    text-align: justify;
+    color: #666666;
+    font-size: 12px;
+
+}
+    .arc text {
+        font: 10px  arial;
+
+    }
+
+    .arc path {
+        stroke: #fff;
+
+    }
+
+
+
+
+
+  /*  rect {
+        stroke-width: 2;
+
+    }*/
+
+.toolTip {
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+
+    display: inline-block;
+    position: fixed;
+    z-index: 1;
+
+}
+
+
+#pie{
+
+    font-family: Arial;
+    font-size: 10px;
+
+    display: inline-block;
+    position: fixed;
+    top: 60px;
+
+
+
+}
+    .step {
+        margin-top: 100px;
+        margin-bottom: 160px;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+
+    #graphic {
+        padding-top: 60px;
+    }
+
+
+    #sections {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+    }
+
+
+.step:last-child {
+    margin-bottom: -20px;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #666;
+        shape-rendering: crispEdges;
+    }
+
+
+
+
+</style>

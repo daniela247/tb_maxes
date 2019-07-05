@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Maxes</title>
+    <script src="//d3js.org/d3.v5.min.js"></script>
+
+</head>
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 id="title">Forain Forever</h1>
+        <p  id="intro">Dans les années 1820 à 1850, plusieurs personnes de l'Entremont possedaient des terres à Fully.
+            Ils étaient tous enregistrés dans des maxes et nous avons ressorti les données pour vous raconter l'histoire des terrains à Fully</p>
+    </div>
+</div>
+<div class="principal">
+    <!-- texte graphique genre -->
+    <p>
+    Comme dans tous villages, nous retrouvons des personnes. Ces derniers sont souvent mariés et/ou ont une famille.
+    Mais il se peut qu'ils soient célibataire. Ce qui créer plusieurs groupe
+    </p>
+    <ul>
+        <li> Homme</li>
+        <li>Femme </li>
+        <li>Couple</li>
+        <li>Famille</li>
+    </ul>
+    <p>
+        Tout le monde souhaite connaître combien de personnes sont en couple ou célibataire. Voici les résultats :
+    </p>
+    <!-- Graphique I : Genre - dig. secteur-->
+    <embed id="pie" src="Pages/Genre/GenrePie.html" style="width:1200px; height: 400px;">
+
+    <!-- Texte pour parler des origines selon genre -->
+    <div class="orgineGenre">
+    <p>
+        Savoir le genre des personnes c'est bien mais d'où viennent-ils et pourquoi voulons nous ces informations ?
+    </p>
+        <p> Ils viennent de 5 villages qui font partis de l'Entremont soit : Sembrancher, Bagnes, Orsières, Vollèges et Liddes. </p>
+<!-- Image de l'Entremont -->
+        <img src="Images/Entremont.png" height="353" width="530" class="center"/><br/>
+      <center><i  id="source">Source : Tschubby (https://commons.wikimedia.org/wiki/File:Karte_Bezirk_Entremont_2007.png)</i></center>
+
+
+        <p> Le genre des personnes est utile pour savoir si il y avait une tendance à s'inscrire en couple, en famille ou individuellement.
+        Maintenant, il est intéressant de connaître dans quelles villages il y a le plus de couple, famille, homme et femme</p>
+    </div>
+</div>
+</body>
+</html>
+
+
+<style>
+
+    /*CSS Responsive pour les écran d'ordinateur*/
+    @media screen and (min-width: 1280px){
+    .principal{
+        padding-top: 20px;
+        margin-left: 280px;
+        margin-right: 280px;
+
+    }
+
+        #pie{
+            margin-left: -8px;
+            margin-right: 20px;
+
+        }
+
+    }
+
+
+    @media screen and (min-width: 600px ) and (max-width: 1280px){
+        .principal{
+            padding-top: 20px;
+            margin-left: 55px;
+            margin-right: 55px;
+
+        }
+
+        #pie{
+            margin-left: -8px;
+            margin-right: 200px;
+
+        }
+
+
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+body{
+    font-family: arial;
+    text-align: justify;
+}
+.jumbotron-fluid{
+
+
+    display: inline-block;
+    margin : 0 auto;
+    background-image: url("Images/vignoble.png") ;
+    background-repeat: no-repeat;
+    color: white;
+    height: 320px;
+    text-align: center;
+}
+    #title {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+
+
+    #source{
+        font-size: 8px;
+        align-content: center;
+    }
+
+</style>
+
