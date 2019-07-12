@@ -11,16 +11,24 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 id="title">Forain Forever</h1>
-        <p  id="intro">Dans les années 1820 à 1850, plusieurs personnes de l'Entremont possedaient des terres à Fully.
-            Ils étaient tous enregistrés dans des maxes et nous avons ressorti les données pour vous raconter l'histoire des terrains à Fully</p>
+        <h1 id="title">Les Maxes</h1>
+        <p  id="intro">Dans les années 1820 à 1850, plusieurs personnes possédaient des terres dans le village de Fully.<br/>
+            Ces personnes pouvaient être des habitants de la région mais il y avait également des habitants du district de l'Entremont
+              Ils étaient tous enregistrés dans des maxes et nous avons ressorti les données pour vous raconter l'histoire des terrains à Fully</p>
     </div>
 </div>
 <div class="principal">
     <!-- texte graphique genre -->
+    Dans le monde entier dans les années 1800 comme aujourd'hui, nous avons plusieurs nous retrouvons plusieurs statuts. <br>
+    Certaines personnes sont mariées, ce qui créer des couples. <br/>
+    Une fois que ces couples donnent naissance à un ou plusieurs enfants, ils deviennet une famille.<br/>
+
+
     <p>
-    Comme dans tous villages, nous retrouvons des personnes. Ces derniers sont souvent mariés et/ou ont une famille.
-    Mais il se peut qu'ils soient célibataire. Ce qui créer plusieurs groupe
+         Mais pas tout le monde se marie ou fond une famille. Ce qui fait qu'il y a des hommes et des femmes célbaitaires.
+    </p>
+
+    Comme dans tous les villages, nous retrouvons ces types de personnes. Ce qui créer plusieurs catégories :
     </p>
     <ul>
         <li> Homme</li>
@@ -29,10 +37,11 @@
         <li>Famille</li>
     </ul>
     <p>
-        Tout le monde souhaite connaître combien de personnes sont en couple ou célibataire. Voici les résultats :
+        Ces personnes peuvent posséder des terrains. Mais combien de couple et de famille en possédent ? Et les célibataires ? Voici les résultats
+
     </p>
     <!-- Graphique I : Genre - dig. secteur-->
-    <embed id="pie" src="Pages/GenrePie.html" style="width:1200px; height: 400px;">
+    <embed id="pie" src="Pages/GenrePie.html" style="width:1200px; height: 400px;" >
 
     <!-- Texte pour parler des origines selon genre -->
     <div class="orgineGenre">
@@ -41,85 +50,121 @@
     </p>
         <p> Ils viennent de 5 villages qui font partis de l'Entremont soit : Sembrancher, Bagnes, Orsières, Vollèges et Liddes. </p>
 <!-- Image de l'Entremont -->
-        <img src="Images/Entremont.png" height="353" width="530" class="center"/><br/>
-      <center><i  id="source">Source : Tschubby (https://commons.wikimedia.org/wiki/File:Karte_Bezirk_Entremont_2007.png)</i></center>
+        <div class="parallax"></div>
+        <!--   <img  src="Images/Entremont.png" height="353" width="530" class="center"/><br/>
+         <center><i  id="source">Source : Tschubby (https://commons.wikimedia.org/wiki/File:Karte_Bezirk_Entremont_2007.png)</i></center>
+   -->
+
+           <p> Le genre des personnes est utile pour savoir si il y avait une tendance à s'inscrire en couple, en famille ou individuellement.
+           Maintenant, il est intéressant de connaître dans quelles villages il y a le plus de couple, famille, homme et femme</p>
+
+           <embed id="genreorigineChart" src="Pages/GOrigineHistogram.html" style="width:750px; height: 400px;">
+       </div>
+   </div>
+   </body>
+   </html>
 
 
-        <p> Le genre des personnes est utile pour savoir si il y avait une tendance à s'inscrire en couple, en famille ou individuellement.
-        Maintenant, il est intéressant de connaître dans quelles villages il y a le plus de couple, famille, homme et femme</p>
-    </div>
-</div>
-</body>
-</html>
+   <style>
+       .container{
+           margin: 0 auto;
+       }
+
+       /*CSS Responsive pour les écran d'ordinateur*/
+       @media screen and (min-width: 1280px){
+       .principal{
+           padding-top: 20px;
+           margin-left: 280px;
+           margin-right: 280px;
+
+       }
+           #pie{
+               margin-left: -8px;
+               margin-right: 20px;
+
+           }
+
+           #genreorigineChart{
+               margin-left: 180px;
+           }
+
+       }
 
 
-<style>
+       @media screen and (min-width: 600px ) and (max-width: 1280px){
+           .principal{
+               padding-top: 20px;
+               margin-left: 55px;
+               margin-right: 55px;
 
-    /*CSS Responsive pour les écran d'ordinateur*/
-    @media screen and (min-width: 1280px){
-    .principal{
-        padding-top: 20px;
-        margin-left: 280px;
-        margin-right: 280px;
+           }
 
-    }
+           #pie{
+               margin-left: -8px;
+               margin-right: 200px;
 
-        #pie{
-            margin-left: -8px;
-            margin-right: 20px;
+           }
 
-        }
-
-    }
-
-
-    @media screen and (min-width: 600px ) and (max-width: 1280px){
-        .principal{
-            padding-top: 20px;
-            margin-left: 55px;
-            margin-right: 55px;
-
-        }
-
-        #pie{
-            margin-left: -8px;
-            margin-right: 200px;
-
-        }
+           #genreorigineChart{
+               margin-left: 40px;
+           }
 
 
-    }
-    .center{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-body{
-    font-family: arial;
-    text-align: justify;
-}
-.jumbotron-fluid{
+       }
+       .parallax {
+           /* The image used */
+           background-image: url("images/Entremont.png");
+
+           /* Set a specific height */
+           min-height: 600px;
+
+           /* Create the parallax scrolling effect */
+           background-attachment: fixed;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size: 750px;
+       }
+       .center{
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+       }
+   body{
+       font-family: arial;
+       text-align: justify;
+       margin: 0 auto;
+   }
+
+   img{
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+   }
+   .jumbotron-fluid{
 
 
-    display: inline-block;
-    margin : 0 auto;
-    background-image: url("Images/vignoble.png") ;
-    background-repeat: no-repeat;
-    color: white;
-    height: 320px;
-    text-align: center;
-}
-    #title {
-        padding-top: 50px;
-        padding-bottom: 20px;
-    }
+       display: inline-block;
+       margin : 0 auto;
+       text-align: center;
+       background-image: url("Images/vignoble.png") ;
+       background-repeat: no-repeat;
+       color: white;
+       height: 450px;
+       text-align: center;
+       background-attachment: fixed;
+   }
+       #title {
+           padding-top: 100px;
+           padding-bottom: 20px;
+       }
 
 
 
-    #source{
-        font-size: 8px;
-        align-content: center;
-    }
+       #source{
+           font-size: 8px;
+           align-content: center;
+       }
 
-</style>
+   </style>
 

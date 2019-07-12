@@ -1,6 +1,8 @@
+//Source pie chart de base : https://bl.ocks.org/zanarmstrong/2f22eba1cb1b6b80e6595fadd81e7424
+//Source transition + annotations : http://bl.ocks.org/nadinesk/99393098950665c471e035ac517c2224
 var div = d3.select("body").append("div").attr("class", "toolTip");
 var width = 500,
-    height = 300,
+    height = 100,
     radius = Math.min(width, height) /3;
 
 var legendRectSize = 10; //taille écriture des légendes
@@ -14,7 +16,7 @@ var color = d3.scale.ordinal()
 
 //Aide pour le texte
 var arc = d3.svg.arc()
-    .outerRadius(radius - 10)
+    .outerRadius(radius - 18)
     .innerRadius(0);
 
 //Label
@@ -24,6 +26,8 @@ var labelArc = d3.svg.arc()
 
 var pie = d3.layout.pie()
     .sort(null)
+    .startAngle(1.1*Math.PI)
+    .endAngle(3.1*Math.PI)
     .value(function(d) { return d.count; });
 
 var svg = d3.select("#pie").append("svg")
@@ -47,7 +51,7 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         .style("fill", function(d) { return color(d.data.genre); })
         //Mouvement
         .transition().delay(function(d,i){
-        return i * 600; })
+        return i * 500; })
         .duration(500)
         .attrTween('d', function(d) {
             var i = d3.interpolate(d.startAngle+0.1, d.endAngle );
@@ -63,7 +67,7 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
             return "translate(" + labelArc.centroid(d) + ")";}
         )
         .text( function(d, i) {return d.data.count;})
-        .attr("data-legend",function(d) { return d.data.genre});
+        .attr("data-legend",function(d) { return d.data.genre})
 
     d3.selectAll("path").on("mousemove", function(d) {
         div.style("left", d3.event.pageX+10+"px");
@@ -102,7 +106,6 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         .attr('y', legendRectSize - legendSpacing)
         .text(function(d) { return d; });
 });
-
 
 
 
