@@ -76,12 +76,12 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
         .style("min-height","80px")
         
     // Add a label for the airport. The `key` comes from the nest operator.
-    div.append("text")
-        .attr("dy", ".35em")
-        .attr("x", (m /2) - 15+"px")
-        .attr("y", -90)
-        .attr("text-anchor", "middle")
-        .text(function(d) { return d.key; });
+    div.append("span")
+    	.attr("class","nomhameau")
+        .text(function(d) { return d.key; })
+        .append("span")
+        	.attr("class","nombrehameau")
+        	.text(function(d) { return " (" + d.values[0].totalOrigin +")" });
 
     // Add svg after the label
     var svg = div.append("svg")
