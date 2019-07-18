@@ -17,6 +17,9 @@ var arc = d3.svg.arc()
     .innerRadius(r / 2)
     .outerRadius(r);
 
+// Create a new scale for radius (based on count)
+var radius = d3.scale.linear()
+	.range([10,r]) // range = la taille minimum-maximum en pixels du rayon de ton donut chart 
 
 // Load the flight data asynchronously.
 d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
@@ -29,28 +32,66 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
         .key(function(d) { return d.origine; })
         .entries(hameau);
 
+    // calculer valeurs minimales-maximales dans les données du nombre de personnes (pour la taille du donut)
+    // étendre "datas" pour ajouter, pour chaque origine, la somme des "count" des différents genres, 
+    // nommé "totalOrigin"
+    datas.forEach(function (d) {
+    	totalOrigin = d3.sum(d.values, function(d) {return +d.count;})
+    	d.values.forEach(function (dd) {
+    		dd.totalOrigin = totalOrigin
+    	})
+    })
+
+    //console.log(datas); // DEBUG
+
+    // trier par nombre décroissant de "total origin"
+    datas.sort(function(a,b) {return d3.descending(a.values[0].totalOrigin, b.values[0].totalOrigin)})
+
+    // définir le radius / rayon des arcs (rendre fonction de 'count')
+    var max = d3.max(datas, function(d) {return d.values[0].totalOrigin})
+    var min = d3.min(datas, function(d) {return d.values[0].totalOrigin})
+   	radius.domain([min, max])
+   	
+   	// appliquer la fonction radius dynqmieuement en fonction des données, au rayon des arcs
+   	arc
+   		.innerRadius(function(d) {return radius(d.data.totalOrigin)/2})
+   		.outerRadius(function(d) {return radius(d.data.totalOrigin)})
+
+   	// ajouter une fonction utilitaire pour fixer dynamiquement la taille du div, du svg, etc.
+   	function size(d) {
+   		return radius(d.values[0].totalOrigin) + m
+   	}
+
     // Insert an svg element (with margin) for each airport in our dataset. A
     // child g element translates the origine to the pie center.
-    var svg = d3.select("body").selectAll("div")
+    var div = d3.select("body").selectAll("div")
         .data(datas)
         .enter().append("div") // http://code.google.com/p/chromium/issues/detail?id=98951
         .style("display", "inline-block")
-        .style("width", (r + m) * 2 + "px")
-        .style("height", (r + m) * 2 + "px")
-        .append("svg")
-        .attr("width", (r + m) * 2)
-        .attr("height", (r + m) * 2)
-        .append("g")
-        .attr("transform", "translate(" + (r + m )  + "," + (r + m) + ")");
-
-
+        //.style("width", (r + m) * 2 + "px")
+        //.style("height", (r + m) * 2 + "px")
+        .style("width", function(d) { return 2*size(d)+"px" })
+        .style("height", function(d) { return 2*size(d)+"px" })
+        .style("min-width","80px")
+        .style("min-height","80px")
+        
     // Add a label for the airport. The `key` comes from the nest operator.
-    svg.append("text")
+    div.append("text")
         .attr("dy", ".35em")
         .attr("x", (m /2) - 15+"px")
         .attr("y", -90)
         .attr("text-anchor", "middle")
         .text(function(d) { return d.key; });
+
+    // Add svg after the label
+    var svg = div.append("svg")
+        //.attr("width", (r + m) * 2)
+        //.attr("height", (r + m) * 2)
+        .attr("width", function(d) { return 2*size(d) })
+        .attr("height", function(d) { return 2*size(d) })
+        .append("g")
+        // .attr("transform", "translate(" + (r + m )  + "," + (r + m) + ")");
+        .attr("transform", function(d) { return "translate(" + size(d)  + "," + size(d) + ")" });
 
     // Pass the nested per-airport values to the pie layout. The layout computes
     // the angles for each arc. Another g element will hold the arc and its label.
@@ -69,7 +110,7 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
 
 
     // Add a label to the larger arcs, translated to the arc centroid and rotated.
-    g.filter(function(d) { return d.endAngle - d.startAngle > .1; }).append("text")
+    g.filter(function(d) { return (d.endAngle - d.startAngle > .1) && d.data.totalOrigin > (max+min)/2; }).append("text")
         .attr("dy", ".20em")
         .attr("text-anchor", "middle")
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
