@@ -1,128 +1,157 @@
-//Source code : https://gist.github.com/mbostock/3887051
-//Gestion de la taille du graphique
 
+//source : https://bl.ocks.org/hydrosquall/7966e9c8e8414ffcd8b5
+//Highlight : https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 600,
+    height = 250 ;
 
+var divTooltip = d3.select("body").append("div").attr("class", "toolTip");
 
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 30, left: 40}, //Marge pour le graphique
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
+var x1 = d3.scale.ordinal();
 
-//Pour les taile des bandes au niveau du X
-var x0 = d3.scaleBand() //Construction d'un scale
-    .rangeRound([25, width]) //si on n'a pas ça, rien de s'affiche au niveau des barres
-    .paddingInner(0.1);
+var y = d3.scale.linear()
+    .range([height, 0]);
 
-var x1 = d3.scaleBand()
-    .padding(0.05);
+var color = d3.scale.ordinal()
+    .range(["#54E868", "#54CCE8", "#6395FF", "#50FFC5"]);
 
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .tickSize(0)
+    .orient("bottom");
 
-//Gere axe y
-var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
 
-/*
-Couleurs :
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left+ margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-Femme violet -> 	#DDA0DD
-Homme bleu ->	#87CEFA
-Couple rouge -> 		#FA8072
-Famille orange -> #FF7F50
-
- */
-
-var z = d3.scaleOrdinal()
-    .range(["#FF7F50", "#FA8072", "#87CEFA", "#DDA0DD"]);
-
-
-d3.csv("../CSV/GenreOrigine.csv", function(d, i, columns) {
-    //Prend chaque colonne
-    for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-    return d;
-}, function(error, data) {
+d3.csv("../CSV/GenreOrigine.csv", function(error, data) {
     if (error) throw error;
 
+    //Couples, Famille...
+    var genreNames = d3.keys(data[0]).filter(function(key) { return key !== "Origine"; });
+
+    data.forEach(function(d) {
+        //Valeur pour chacune des origines par rapport au genre
+        d.genres = genreNames.map(function(name) { return {name: name, value: +d[name]}; });
+
+    });
 
 
 
-
-    //Liste les sous groupes
-    var subgroups = data.columns.slice(1);
-
-    //Prend les origines
     x0.domain(data.map(function(d) { return d.Origine; }));
+    x1.domain(genreNames).rangeRoundBands([0, x0.rangeBand()]);
+    y.domain([0, d3.max(data, function(d) { return d3.max(d.genres, function(d) { return d.value; }); })]);
 
-    x1.domain(subgroups).rangeRound([0, x0.bandwidth()]);
-
-    //Met le chiffre maximum soit 450
-    y.domain([0, d3.max(data, function(d) { return d3.max(subgroups, function(key) { return d[key]; }); })]).nice();
-
-
-    //Gere les barres
-    g.append("g")
-        .selectAll("g")
-        .data(data)
-        .enter().append("g")
-        .attr("transform", function(d) { return "translate(" + x0(d.Origine) + ",0)"; })
-        .selectAll("rect")
-        .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
-        .enter().append("rect")
-        .attr("x", function(d) { return x1(d.key); })
-        .attr("y", function(d) { return y(d.value); })
-        .attr("width", x1.bandwidth())
-        .attr("height", function(d) { return height - y(d.value); })
-        .attr("fill", function(d) { return z(d.key); }) //couleur
-
-
-
-    //Axe X
-    g.append("g")
-        .attr("class", "axis")
+    svg.append("g")
+        .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x0));
+        .call(xAxis);
 
-
-    //Axe Y
-    g.append("g")
-        .attr("class", "axis")
-        .call(d3.axisLeft(y).ticks(null, "s"))
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
         .append("text")
-        .attr("x", 2)
-        .attr("y", y(y.ticks().pop()) + 0.5)
-        .attr("dy", "0.32em")
-        .attr("fill", "#000")
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "start")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0.8)
+        .attr("dy", ".91em")
+        .style("text-anchor", "end")
         .text("Nombre de personnes");
 
-
-    //Legent
-    var legend = g.append("g")
-        .attr("font-family", "Arial")
-        .attr("font-size", 10)
-        .attr("text-anchor", "end")
-        .selectAll("g")
-        .data(subgroups.slice().reverse())
+//Creation des groupes
+    var Origine = svg.selectAll(".Origine")
+        .data(data)
         .enter().append("g")
+        .attr("class", "g")
+        .attr("transform", function(d) { return "translate(" + x0(d.Origine) + ",0)"; });
+
+    Origine.selectAll("rect")
+        .data(function(d) { return d.genres; })
+        .enter().append("rect")
+        .attr("width", x1.rangeBand())
+        .attr("x", function(d) { return x1(d.name); })
+        .style("fill", function(d) { return color(d.name) })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); })
+        .on("mouseover", function(d) {
+            d3.select(this).style("fill", d3.rgb(color(d.name)).darker(3))
+
+        })
+        .on("mouseout", function(d) {
+            d3.select(this).style("fill", color(d.name))
+        });
+
+//Tooltip : https://bl.ocks.org/Jimimimi/a7b8964880a347fbde19de2de2fdd5d5
+    Origine.on("mousemove", function(d){
+        divTooltip.style("left", d3.event.pageX+10+"px");
+        divTooltip.style("top", d3.event.pageY-25+"px");
+        divTooltip.style("display", "inline-block");
+        var x = d3.event.pageX, y = d3.event.pageY
+        var elements = document.querySelectorAll(':hover');
+        l = elements.length
+        l = l-1
+        elementData = elements[l].__data__;
+        var activeBar = window.activeBar = elements[l];
+        divTooltip.html(elementData.name + " : " +elementData.value);
+    });
+     Origine.on("mouseout", function(d){
+             divTooltip.style("display", "none");
+        });
+
+
+
+    var legend = svg.selectAll(".legend")
+        .data(genreNames.slice().reverse())
+        .enter().append("g")
+        .attr("class", "legend")
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-
     legend.append("rect")
-        .attr("x", width - 19)
-        .attr("width", 19)
-        .attr("height", 19)
-        .attr("fill", z);
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", color);
 
     legend.append("text")
         .attr("x", width - 24)
-        .attr("y", 9.5)
-        .attr("dy", "0.32em")
+        .attr("y", 9)
+        .style("font-size","12px")
+        .style("text-anchor", "end")
         .text(function(d) { return d; });
 
+    //Highlight
+    d3.select('#inds')
+        .on("change", function () {
+            var sect = document.getElementById("inds");
+            var section = sect.options[sect.selectedIndex].value;
+
+            if(section !== 'Genre') {
+                d3.selectAll("rect")
+                    .attr('opacity', function(d) {
+                        if(d.name !== section) {
+                            return 0.1;
+                        } else {
+                            return 1;
+                        }
+                    })
+
+            } else
+                {
+                d3.selectAll('rect')
+                    .attr('opacity', 1)
+            }
+        });
 
 
 
 });
 
+//d.data.genre == Couple

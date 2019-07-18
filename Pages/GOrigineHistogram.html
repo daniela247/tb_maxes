@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 
 <style>
-
-    /*n'affiche pas la ligne des axes*/
-    .axis .domain {
+    .toolTip {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: absolute;
         display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        text-align: center;
+    }
+    body {
+        font: 10px Arial;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
     }
 
 
+    .x.axis path {
+        display: none;
+    }
+    body{
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+    }
+
+    body::-webkit-scrollbar { width: 0 !important }
+
+#inds{
+    margin-bottom: 20px;
+    width: 120px;
+    height: 30px;
+    cursor : pointer;
+    font-size: 15px;
+}
 
 </style>
-<svg  class="col-xs-12 col-lg-6" width="560" height="300"></svg>
+<div class="container">
+<select id="inds">
+    <option value="Genre" selected>Genre</option>
+    <option value="Femme">Femme</option>
+    <option value="Homme">Homme</option>
+    <option value="Couple">Couple</option>
+    <option value="Famille">Famille</option>
+</select>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<svg></svg>
+</div>
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script src="../Javascript/GenreOrigine/GroupedChart.js"></script>
-<script>
 
-</script>

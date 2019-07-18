@@ -4,7 +4,6 @@
 
     <meta charset="UTF-8">
     <title>Maxes</title>
-    <script src="//d3js.org/d3.v5.min.js"></script>
 
 </head>
 <body>
@@ -18,10 +17,11 @@
     </div>
 </div>
 <div class="principal">
+    <div class="texte">
     <!-- texte graphique genre -->
-    Dans le monde entier dans les années 1800 comme aujourd'hui, nous avons plusieurs nous retrouvons plusieurs statuts. <br>
-    Certaines personnes sont mariées, ce qui créer des couples. <br/>
-    Une fois que ces couples donnent naissance à un ou plusieurs enfants, ils deviennet une famille.<br/>
+    Dans le monde entier dans les années 1800 comme aujourd'hui, nous avons plusieurs nous retrouvons plusieurs statuts.
+    Certaines personnes sont mariées, ce qui créer des couples.
+    Une fois que ces couples donnent naissance à un ou plusieurs enfants, ils deviennet une famille.
 
 
     <p>
@@ -40,15 +40,31 @@
         Ces personnes peuvent posséder des terrains. Mais combien de couple et de famille en possédent ? Et les célibataires ? Voici les résultats
 
     </p>
+    </div>
+    <div class="texte">
     <!-- Graphique I : Genre - dig. secteur-->
-    <embed id="pie" src="Pages/GenrePie.html" style="width:1200px; height: 400px;" >
+        <div id="pieChart">
+    <embed id="pie" src="Pages/GenrePie.html"  >
+        </div>
 
     <!-- Texte pour parler des origines selon genre -->
+
     <div class="orgineGenre">
     <p>
-        Savoir le genre des personnes c'est bien mais d'où viennent-ils et pourquoi voulons nous ces informations ?
-    </p>
-        <p> Ils viennent de 5 villages qui font partis de l'Entremont soit : Sembrancher, Bagnes, Orsières, Vollèges et Liddes. </p>
+        Chacun de nous est originaire d'un village. Et ces personnes également.
+        <br/>
+        Ils viennent plus précisement du discrit de l'Enremont qui est composé de 5 villages soit :
+        <ul>
+        <li> Sembrancher </li>
+        <li>Bagnes </li>
+        <li> Orsière </li>
+        <li>Vollèges </li>
+        <li>Liddes</li>
+    </ul>
+    </div>
+
+
+        </p>
 <!-- Image de l'Entremont -->
         <div class="parallax"></div>
         <!--   <img  src="Images/Entremont.png" height="353" width="530" class="center"/><br/>
@@ -56,19 +72,36 @@
    -->
 
            <p> Le genre des personnes est utile pour savoir si il y avait une tendance à s'inscrire en couple, en famille ou individuellement.
-           Maintenant, il est intéressant de connaître dans quelles villages il y a le plus de couple, famille, homme et femme</p>
+           Mais combien se sont-ils inscrit à Sembrancher en étant un couple ? Dans quelle village retrouvons-nous le plus de femmes ?
+           Vous vous posez certainement ces questions, voici les réponses : </p>
 
-           <embed id="genreorigineChart" src="Pages/GOrigineHistogram.html" style="width:750px; height: 400px;">
+           <embed id="genreorigineChart" src="Pages/GOrigineHistogram.html" style="width:750px; height: 500px; ">
+
+        <p>Vous savez ce qu'on retrouve souvent dans les villages ? Des hameaux ! Mais qu'est-ce que c'est ? Tout simplement des parties d'un village qui
+        sont malheureusement trop petite pour être considérés comme un village. Du coup, on les appelent des hameaux. </p>
+        <p>
+            Nos villages en possède plusieurs. La question qu'on peut se poser est combien de femme, homme, couple ou famille possède chaque hameau.
+            Ont-ils tous forément un de ces genres ?
+        </p>
+
+        <embed id="MultipleDonutChart" src="Pages/DonutChartHameau.html">
        </div>
    </div>
+
    </body>
    </html>
 
 
    <style>
+
+       .texte{
+           margin-top: 20px;
+           margin-bottom: 20px;
+       }
        .container{
            margin: 0 auto;
        }
+
 
        /*CSS Responsive pour les écran d'ordinateur*/
        @media screen and (min-width: 1280px){
@@ -80,12 +113,23 @@
        }
            #pie{
                margin-left: -8px;
-               margin-right: 20px;
+               margin-right: 80px;
+               width: 800px;
+               height: 400px;
 
            }
 
+           #pieChart{
+               margin-left: 120px;
+           }
            #genreorigineChart{
                margin-left: 180px;
+               margin-top : -100px;
+           }
+
+           #MultipleDonutChart{
+               width:900px;
+               height: 500px;
            }
 
        }
@@ -102,13 +146,22 @@
            #pie{
                margin-left: -8px;
                margin-right: 200px;
+               width: 700px;
+               height: 400px;
 
            }
-
+           #pieChart{
+               margin-right: -80px;
+           }
            #genreorigineChart{
-               margin-left: 40px;
+               margin-top : -120px;
            }
 
+
+           #MultipleDonutChart{
+               width: 650px;
+               height: 600px;
+           }
 
        }
        .parallax {
@@ -116,13 +169,13 @@
            background-image: url("images/Entremont.png");
 
            /* Set a specific height */
-           min-height: 600px;
+           min-height: 450px;
 
            /* Create the parallax scrolling effect */
            background-attachment: fixed;
            background-position: center;
            background-repeat: no-repeat;
-           background-size: 750px;
+           background-size: 700px;
        }
        .center{
            display: block;
@@ -135,12 +188,7 @@
        margin: 0 auto;
    }
 
-   img{
-       background-attachment: fixed;
-       background-position: center;
-       background-repeat: no-repeat;
-       background-size: cover;
-   }
+
    .jumbotron-fluid{
 
 
@@ -165,6 +213,7 @@
            font-size: 8px;
            align-content: center;
        }
+
 
    </style>
 
