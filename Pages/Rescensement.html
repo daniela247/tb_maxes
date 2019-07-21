@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <style>
     body {
         text-align: center;
@@ -10,22 +11,6 @@
         padding-top: 10px;
     }
 
-    .nomhameau {
-        font-family: Arial;
-        font-size: 12px
-    }
-
-    .nombrehameau{
-        font-family: Arial;
-        font-size: 12px
-    }
-
-
-    /*
-
-    Garde scrollable mais enlève le scrollbar
-    Beaucoup de ligne pour la meme chose car dépend du navigateur utilisé
-     */
     body{
         -ms-overflow-style: none;
         overflow: -moz-scrollbars-none;
@@ -33,10 +18,8 @@
 
     body::-webkit-scrollbar { width: 0 !important }
 
-    .toolTip {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        position: absolute;
-        display: none;
+
+    .d3-tip{
         width: auto;
         height: auto;
         background: none repeat scroll 0 0 white;
@@ -47,14 +30,10 @@
         font: 12px sans-serif;
         padding: 5px;
         text-align: center;
-    }
-    .arc{
-        stroke-width: 2px;
-    }
 
+    }
 
 </style>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -64,7 +43,10 @@
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../Javascript/GenreOrigine/rescensement.js"></script>
 
-<script src="../Javascript/GenreOrigine/DonutChart.js"></script>
+<script>
+
+</script>
 </body>
 </html>

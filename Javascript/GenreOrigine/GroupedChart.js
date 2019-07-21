@@ -81,6 +81,7 @@ d3.csv("../CSV/GenreOrigine.csv", function(error, data) {
         .style("fill", function(d) { return color(d.name) })
         .attr("y", function(d) { return y(d.value); })
         .attr("height", function(d) { return height - y(d.value); })
+        //Highlight
         .on("mouseover", function(d) {
             d3.select(this).style("fill", d3.rgb(color(d.name)).darker(3))
 

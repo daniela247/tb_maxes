@@ -5,25 +5,6 @@ var width = 500,
     height = 300,
     radius = Math.min(width, height) /3;
 
-var lastIndex = -1;
-var activeIndex = 0;
-
-// When scrolling to a new section
-// the activation function for that
-// section is called.
-var activateFunctions = [];
-// If a section has an update function
-// then it is called while scrolling
-// through the section with the current
-// progress through the section.
-var updateFunctions = [];
-
-
-// Sizing for the grid visualization
-var squareSize = 6;
-var squarePad = 2;
-var numPerRow = width / (squareSize + squarePad);
-
 
 
 var legendRectSize = 10; //taille écriture des légendes
@@ -56,7 +37,7 @@ var svg = d3.select("#pie")
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-
+ var arcOver = d3.svg.arc().innerRadius(radius).outerRadius(radius - 50)
 d3.csv("../CSV/genrePie.csv", type, function(error, data) {
     if (error) throw error;
 
@@ -65,23 +46,18 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc");
-
          g.append("path")
         .attr("d", arc)
         .style("fill", function(d) { return color(d.data.genre); })
 
-
-
-
-
-/*^^
-var pat = svg.selectAll(".arc").selectAll("path");
-pat.style("fill", function(d) {
-    if(d.data.genre=="Couple") {
-        return "red"
-    }else
-    return color(d.data.genre); });
-*/
+    /*^^
+    var pat = svg.selectAll(".arc").selectAll("path");
+    pat.style("fill", function(d) {
+        if(d.data.genre=="Couple") {
+            return "red"
+        }else
+        return color(d.data.genre); });
+    */
     g.append("text")
         .attr("transform", function(d){
             return "translate(" + labelArc.centroid(d) + ")";}
@@ -91,7 +67,8 @@ pat.style("fill", function(d) {
 
 
     //Pour tooltip
-    d3.selectAll("path").on("mousemove", function(d) {
+    d3.selectAll("path").on("mouseover", function(d) {
+
         div.style("left", 490+"px");
         div.style("top", 80+"px");
         div.style("display", "inline-block");
@@ -102,18 +79,11 @@ pat.style("fill", function(d) {
     });
 
     d3.selectAll("path").on("mouseout", function(d){
-
         div.style("display", "none");
 
     });
 
 
-    path.on("mouseover", function(d){
-        d3.select(this).transition()
-            .duration(200)
-            .attr("d", arc)
-            .attr("stroke","white")
-    });
 
 
 

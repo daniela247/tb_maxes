@@ -44,14 +44,6 @@
 
 
 
-<script>
-    d3.csv("../CSV/genrePie.csv", function(data){
-        d3.select("body").append("div").attr("class", "toolTip")
-            .datum(data)
-            .call(chart);
-    });
-</script>
-
 
 
 </html>
@@ -98,7 +90,7 @@ svg .g {
     stroke-width: 5px;
 }
 
-.toolTip {
+.d3-tip{
     width: auto;
     height: auto;
     background: none repeat scroll 0 0 white;
@@ -110,10 +102,8 @@ svg .g {
     padding: 5px;
     text-align: center;
 
-opacity: 0.8;
-    position: fixed;
-
 }
+
 /*
 Garde scrollable mais enlève le scrollbar
 Beaucoup de ligne pour la meme chose car dépend du navigateur utilisé
