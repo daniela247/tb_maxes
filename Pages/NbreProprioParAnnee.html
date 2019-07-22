@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
 
+</head>
+<body>
 <style>
     .toolTip {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -28,6 +34,14 @@
     }
 
 
+    #inds{
+        margin-bottom: 20px;
+        width: 100px;
+        height: 30px;
+        cursor : pointer;
+        font-size: 12px;
+    }
+
     .x.axis path {
         display: none;
     }
@@ -38,27 +52,30 @@
 
     body::-webkit-scrollbar { width: 0 !important }
 
-#inds{
-    margin-bottom: 20px;
-    width: 120px;
-    height: 30px;
-    cursor : pointer;
-    font-size: 15px;
-}
 
 </style>
 <div class="container">
-<select id="inds">
-    <option value="Genre" selected>Genre</option>
-    <option value="Femme">Femme</option>
-    <option value="Homme">Homme</option>
-    <option value="Couple">Couple</option>
-    <option value="Famille">Famille</option>
-</select>
+    <select id="inds">
+        <option value="Origine" selected>Origine</option>
+        <option value="Sembrancher">Sembrancher</option>
+        <option value="Vollèges">Vollèges</option>
+        <option value="Bagnes">Bagnes</option>
+        <option value="Liddes">Liddes</option>
+        <option value="Orsières">Orsières</option>
+    </select>
 
-<svg></svg>
+
 </div>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<script src="../Javascript/GenreOrigine/GroupedChart.js"></script>
+<script src="../Javascript/GenreOrigine/NbreProprioParAnnees.js"></script>
+<script>
 
 
+
+
+
+
+</script>
+
+</body>
+</html>
