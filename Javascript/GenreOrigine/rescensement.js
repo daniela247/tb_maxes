@@ -40,7 +40,14 @@ d3.csv("../CSV/rescensement.csv", function(error, data) {
 
 
 
+    var total = d3.sum(data, function (d){
+        return d.count
+    });
 
+
+    data.forEach(function(d){
+        d.percentage = d.count / total;
+    });
 
     var legend = d3.select("body").append("svg")
         .attr("class", "legend")

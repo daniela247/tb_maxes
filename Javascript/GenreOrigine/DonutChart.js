@@ -5,7 +5,7 @@
 var m = 15,
     r = 80,
     z = d3.scale.ordinal()
-        .range(["#50FFC5", "#54E868", "#54CCE8","#6395FF"]);
+        .range(["#6395FF", "#54CCE8"]);
 
 // Define a pie layout: the pie angle encodes the count of flights. Since our
 // data is stored in CSV, the counts are strings which we coerce to numbers.

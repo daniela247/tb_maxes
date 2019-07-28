@@ -1,205 +1,49 @@
 genre,origine,count
-Femme,Bagnes,8
-Famille,Bagnes,44
-Couple,Bagnes,166
-Homme,Bagnes,25
-Couple, B. (Bruson),33
-Homme,  B. (Bruson) ,29
-Famille,  B. (Bruson) ,30
-Femme,  B. (Champsec) ,1
-Homme,  B. (Champsec) ,17
-Couple,  B. (Champsec) ,10
-Famille,  B. (Champsec) ,12
-Couple,  B. (Fontenelles) ,5
-Famille,  B. (Fontenelles) ,3
-Homme,  B. (Fontenelles) ,2
-Couple,  B. (La Crettaz-Verbier) ,1
-Homme,  B. (La Crettaz-Verbier) ,3
-Couple,  B. (La Montau-Champsec) ,4
-Famille,  B. (La Montau-Champsec) ,1
-Homme,  B. (La Montau-Champsec) ,5
-Famille,  B. (Le Bri-Verbier) ,1
-Couple,  B. (Le Châble) ,15
-Homme,  B. (Le Châble) ,30
-Femme,  B. (Le Châble) ,1
-Famille,  B. (Le Châble) ,17
-Famille,  B. (Le Cotterg) ,8
-Homme,  B. (Le Cotterg) ,16
-Couple,  B. (Le Cotterg) ,11
-Famille,  B. (Le Fregnolet-Champsec) ,2
-Homme,  B. (Le Fregnolet-Champsec) ,1
-Homme,  B. (Le Liappey-Versegères) ,1
-Famille,  B. (Le Martinet-Versegères) ,1
-Famille,  B. (Le Sappey-Bruson) ,3
-Couple,  B. (Le Sappey-Bruson) ,3
-Homme,  B. (Le Sappey-Bruson) ,3
-Homme,  B. (Les Morgnes-Lourtier) ,4
-Famille,  B. (Les Morgnes-Lourtier) ,1
-Homme,  B. (Les Places-Champsec) ,2
-Famille,  B. (Les Places-Champsec) ,2
-Famille,  B. (Les Vernays-Fontenelles) ,3
-Homme,  B. (Les Vernays-Fontenelles) ,2
-Femme,  B. (Les Vernays-Fontenelles) ,4
-Couple,  B. (Les Vernays-Fontenelles) ,2
-Femme,  B. (Lourtier) ,1
-Famille,  B. (Lourtier) ,20
-Homme,  B. (Lourtier) ,25
-Couple,  B. (Lourtier) ,13
-Famille,  B. (Médières) ,21
-Couple,  B. (Médières) ,14
-Homme,  B. (Médières) ,16
-Famille,  B. (Montagnier) ,3
-Femme,  B. (Montagnier) ,1
-Homme,  B. (Montagnier) ,9
-Couple,  B. (Montagnier) ,3
-Homme,  B. (Prarreyer-Versegères) ,11
-Famille,  B. (Prarreyer-Versegères) ,9
-Couple,  B. (Prarreyer-Versegères) ,10
-Famille,  B. (Sarreyer) ,37
-Homme,  B. (Sarreyer) ,23
-Couple,  B. (Sarreyer) ,19
-Homme,  B. (Verbier) ,28
-Famille,  B. (Verbier) ,37
-Femme,  B. (Verbier) ,4
-Couple,  B. (Verbier) ,21
-Homme,  B. (Versegères) ,15
-Couple,  B. (Versegères) ,3
-Famille,  B. (Versegères) ,10
-Couple,  B. (Villette) ,20
-Homme,  B. (Villette) ,17
-Famille,  B. (Villette) ,18
-Famille,Bourg-Saint-Pierre,7
-Homme,Bourg-Saint-Pierre,27
-Couple,Bourg-Saint-Pierre,2
-Homme,Liddes,14
-Couple,Liddes,14
-Femme,Liddes,2
-Famille,Liddes,7
-Famille,  L. (Chandonne) ,1
-Homme,  L. (Chandonne) ,3
-Couple,  L. (Dranse) ,6
-Famille,  L. (Dranse) ,2
-Homme,  L. (Dranse) ,10
-Homme,  L. (Fontaine Dessus) ,2
-Homme,  L. (Fontaine) ,1
-Famille,  L. (Fontaine) ,1
-Homme,  L. (Fornex) ,1
-Famille,  L. (Fornex) ,1
-Famille,  L. (Rive-Haute) ,3
-Homme,  L. (Vichères) ,1
-Homme,  L. (Ville) ,10
-Couple,  L. (Ville) ,12
-Famille,  L. (Ville) ,2
-Homme,Orsières,16
-Couple,Orsières,184
-Famille,Orsières,31
-Femme,Orsières,12
-Couple, Orsières  ,1
-Couple, Orsières ,1
-Couple, Orsières ,3
-Homme,  O. (Chamoille) ,2
-Famille,  O. (Chamoille) ,1
-Couple,  O. (Chamoille) ,12
-Famille,  O. (Chez les Addy) ,2
-Couple,  O. (Chez les Addy) ,2
-Homme,  O. (Chez les Addy) ,3
-Homme,  O. (Chez les Giroud) ,1
-Famille,  O. (Chez les Giroud) ,1
-Couple,  O. (Chez les Reuses) ,6
-Homme,  O. (Chez les Reuses) ,5
-Famille,  O. (Chez les Reuses) ,7
-Femme,  O. (Commeire) ,2
-Famille,  O. (Commeire) ,5
-Homme,  O. (Commeire) ,13
-Couple,  O. (Commeire) ,13
-Couple,  O. (Praz de Fort) ,2
-Homme,  O. (Issert) ,16
-Famille,  O. (Issert) ,11
-Couple,  O. (Issert) ,31
-Femme,  O. (Issert) ,1
-Femme,  O. (La Douay) ,1
-Couple,  O. (La Douay) ,1
-Homme,  O. (La Douay) ,3
-Famille,  O. (La Douay) ,1
-Couple,  O. (La Monto) ,6
-Homme,  O. (La Rosière) ,6
-Couple,  O. (La Rosière) ,15
-Famille,  O. (La Rosière) ,1
-Homme,  O. (Le Biolley) ,7
-Famille,  O. (Le Biolley) ,2
-Homme,  O. (Le Borjal) ,3
-Famille,  O. (Le Borjal) ,8
-Couple,  O. (Le Borjal) ,14
-Couple,  O. (Le Châble du Borjal) ,1
-Couple,  O. (Le Châtelard) ,2
-Famille,  O. (Le Châtelard) ,1
-Homme,  O. (Le Châtelard) ,1
-Couple,  O. (Les Arlaches) ,11
-Femme,  O. (Les Arlaches) ,2
-Homme,  O. (Les Arlaches) ,1
-Famille,  O. (Les Arlaches) ,2
-Homme,  O. (Liappey) ,1
-Couple,  O. (Liappey) ,1
-Couple,  O. (Prassurny) ,6
-Femme,  O. (Prassurny) ,1
-Homme,  O. (Prassurny) ,2
-Famille,  O. (Prassurny) ,6
-Homme,  O. (Praz de Fort) ,9
-Femme,  O. (Praz de Fort) ,1
-Famille,  O. (Praz de Fort) ,6
-Couple,  O. (Praz de Fort) ,9
-Famille,  O. (Reppaz) ,6
-Femme,  O. (Reppaz) ,1
-Homme,  O. (Reppaz) ,14
-Couple,  O. (Reppaz) ,16
-Femme,  O. (Som-la-Proz) ,1
-Couple,  O. (Som-la-Proz) ,35
-Famille,  O. (Som-la-Proz) ,13
-Homme,  O. (Som-la-Proz) ,8
-Famille,  O. (Soulalex) ,5
-Homme,  O. (Soulalex) ,5
-Couple,  O. (Soulalex) ,4
-Couple,  O. (Sous l'Eglise) ,1
-Famille,  O. (Sous l'Eglise) ,1
-Homme,  O. (Sur-la-Lex) ,5
-Couple,  O. (Sur-la-Lex) ,9
-Famille,  O. (Sur-la-Lex) ,4
-Couple,  O. (Verlonne) ,1
-Homme,  O. (Verlonne) ,2
-Homme,  O. (Ville) ,10
-Famille,  O. (Ville) ,14
-Femme,  O. (Ville) ,1
-Couple,  O. (Ville) ,49
-Femme,Sembrancher,23
-Famille,Sembrancher,23
-Couple,Sembrancher,97
-Homme,Sembrancher,111
-Couple,  S. (Chamoille) ,1
-Homme,  S. (Chamoille) ,3
-Famille,  S. (La Garde) ,1
-Homme,  S. (La Garde) ,2
-Couple,  S. (La Garde) ,4
-Homme,  S. (Le Clou) ,1
-Homme,  S. (Sommet de la Ville) ,1
-Famille,  S. (Ville) ,2
-Homme,  S. (Ville) ,1
-Couple,  S. (Ville) ,1
-Femme,Vollèges,8
-Homme,Vollèges,52
-Couple,Vollèges,51
-Famille,Vollèges,27
-Homme,  V. (Chemin) ,5
-Couple,  V. (Cries) ,1
-Famille,  V. (Cries) ,1
-Homme,  V. (Cries) ,8
-Homme,  V. (Etiez) ,6
-Couple,  V. (Etiez) ,3
-Famille,  V. (Etiez) ,1
-Femme,  V. (Le Levron) ,2
-Homme,  V. (Le Levron) ,39
-Famille,  V. (Le Levron) ,14
-Couple,  V. (Le Levron) ,22
-Couple,  V. (Vens) ,17
-Homme,  V. (Vens) ,16
-Famille,  V. (Vens) ,12
-Femme,  V. (Vens) ,2
+Homme,Bagnes,97
+Femme,Bagnes,27
+Homme,Bruson,124
+Homme,Champsec,89
+Femme,Champsec,4
+Homme,Fontenelles,21
+Femme,Fontenelles,12
+Homme,Le Châble,127
+Femme,Le Châble,1
+Homme,Le Cotterg,59
+Femme,Lourtier,5
+Homme,Lourtier,115
+Homme,Médières,82
+Femme,Montagnier,1
+Homme,Montagnier,56
+Homme,Sarreyer,93
+Homme,Verbier,139
+Femme,Verbier,21
+Homme,Versegères,94
+Homme,Villette,103
+Homme,Liddes,104
+Femme,Liddes,1
+Homme,Dranse,34
+Homme,Orsières,107
+Femme,Orsières,100
+Homme,Chamoille,22
+Homme,Commeire,46
+Femme,Commeire,12
+Homme,Issert,61
+Homme,La Douay,14
+Femme,La Douay,7
+Homme,La Rosière,22
+Homme,Praz de Fort,24
+Femme,Praz de Fort,3
+Homme,Reppaz,52
+Femme,Reppaz,4
+Homme,Som-la-Proz,21
+Femme,Som-la-Proz,2
+Femme,Sembrancher,63
+Homme,Sembrancher,317
+Homme,Chamoille,27
+Homme,Vollèges,128
+Femme,Vollèges,18
+Homme,Etiez,21
+Homme,Le Levron,88
+Femme,Le Levron,4
+Homme,Vens,46
+Femme,Vens,12

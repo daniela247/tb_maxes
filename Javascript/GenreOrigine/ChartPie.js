@@ -12,17 +12,12 @@ var legendSpacing = 4; //espace entre les legendes
 
 //Couleur des trancher
 var color = d3.scale.ordinal()
-    .range(["#6395FF", "#54CCE8", "#50FFC5", "#54E868"]);
+    .range(["#6395FF", "#54CCE8"]);
 
-//Aide pour le texte
+
 var arc = d3.svg.arc()
     .outerRadius(radius - 18)
     .innerRadius(0);
-
-//Label
-var labelArc = d3.svg.arc()
-    .outerRadius(radius + 15)
-    .innerRadius(radius  );
 
 var pie = d3.layout.pie()
     .sort(null)
@@ -37,16 +32,29 @@ var svg = d3.select("#pie")
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
- var arcOver = d3.svg.arc().innerRadius(radius).outerRadius(radius - 50)
+var arcHighlight = d3.svg.arc()
+    .outerRadius ((radius - 12 )* 1.1);
+
+
 d3.csv("../CSV/genrePie.csv", type, function(error, data) {
     if (error) throw error;
 
+    var total = d3.sum(data, function (d){
+        return d.count
+    });
+
+
+    data.forEach(function(d){
+        d.percentage = d.count / total;
+    });
 
     var g = svg.selectAll(".arc")
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc");
-         g.append("path")
+
+
+    g.append("path")
         .attr("d", arc)
         .style("fill", function(d) { return color(d.data.genre); })
 
@@ -58,13 +66,6 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         }else
         return color(d.data.genre); });
     */
-    g.append("text")
-        .attr("transform", function(d){
-            return "translate(" + labelArc.centroid(d) + ")";}
-        )
-        .text( function(d, i) {return d.data.count;})
-        .attr("data-legend",function(d) { return d.data.genre})
-
 
     //Pour tooltip
     d3.selectAll("path").on("mouseover", function(d) {
@@ -72,14 +73,17 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         div.style("left", 490+"px");
         div.style("top", 80+"px");
         div.style("display", "inline-block");
-        div.html((d.data.genre)+"<br>"+(d.data.count));
-
+        div.html((d.data.genre)+"<br>"+(d.data.count)+"<br>"+( d3.format(".0%")(d.data.percentage )) );
+        d3.select(this).transition().attr("d", arcHighlight)
 
 
     });
 
     d3.selectAll("path").on("mouseout", function(d){
         div.style("display", "none");
+        d3.select(this)
+            .transition()
+            .attr("d",arc(d))
 
     });
 
@@ -96,7 +100,7 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         .attr('transform', function(d, i) {
             var height = legendRectSize + legendSpacing;
             var offset =  height * color.domain().length / 2;
-            var horz = + 18 * legendRectSize; //décaler la légende
+            var horz = + 12 * legendRectSize; //décaler la légende
             var vert = i * 19 - offset;
             return 'translate(' + horz + ',' + vert + ')';
         });
@@ -119,6 +123,3 @@ function type(d) {
     d.count = +d.count;
     return d;
 }
-
-
-

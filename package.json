@@ -12,6 +12,7 @@
     "graph-scroll": "^1.0.2",
     "jquery": "^3.4.1",
     "scroller": "0.0.3",
+    "waypoints": "^4.0.1",
     "webpack": "^4.35.2"
   },
   "devDependencies": {},

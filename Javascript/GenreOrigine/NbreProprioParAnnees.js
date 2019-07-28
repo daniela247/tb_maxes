@@ -36,7 +36,7 @@ var svg = d3.select("body").append("svg")
 d3.csv("../CSV/NbreProprioParAnnees.csv", function(error, data) {
     if (error) throw error;
 
-    //Couples, Famille...
+
     var origineNames = d3.keys(data[0]).filter(function(key) { return key !== "Annee"; });
 
     data.forEach(function(d) {
