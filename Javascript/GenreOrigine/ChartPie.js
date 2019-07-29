@@ -1,5 +1,7 @@
 //Source pie chart de base : https://bl.ocks.org/zanarmstrong/2f22eba1cb1b6b80e6595fadd81e7424
 //Source transition + annotations : http://bl.ocks.org/nadinesk/99393098950665c471e035ac517c2224
+
+//GRAPHIQUE 1
 var div = d3.select("body").append("div").attr("class", "toolTip");
 var width = 500,
     height = 300,
@@ -35,10 +37,11 @@ var svg = d3.select("#pie")
 var arcHighlight = d3.svg.arc()
     .outerRadius ((radius - 12 )* 1.1);
 
-
+//Lecture du CSV
 d3.csv("../CSV/genrePie.csv", type, function(error, data) {
     if (error) throw error;
 
+    //Avoir le pourcentage pour chaque tranche
     var total = d3.sum(data, function (d){
         return d.count
     });
@@ -58,14 +61,6 @@ d3.csv("../CSV/genrePie.csv", type, function(error, data) {
         .attr("d", arc)
         .style("fill", function(d) { return color(d.data.genre); })
 
-    /*^^
-    var pat = svg.selectAll(".arc").selectAll("path");
-    pat.style("fill", function(d) {
-        if(d.data.genre=="Couple") {
-            return "red"
-        }else
-        return color(d.data.genre); });
-    */
 
     //Pour tooltip
     d3.selectAll("path").on("mouseover", function(d) {

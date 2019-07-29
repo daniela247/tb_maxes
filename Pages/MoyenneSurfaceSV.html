@@ -36,7 +36,7 @@
         .y(function(d) { return yScale(d.close); });
     var focus = svg.append("g").style("display","none");
     // import data and create chart
-    d3.csv("MoyenneSurfaceSemVol.csv", function(d) {
+    d3.csv("../CSV/MoyenneSurfaceSemVol.csv", function(d) {
             return {
                 date: parseData(d.date),
                 Sembrancher: +d.Sembrancher,

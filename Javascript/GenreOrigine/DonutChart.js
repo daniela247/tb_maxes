@@ -1,27 +1,23 @@
 //Source : http://bl.ocks.org/mbostock/1305337
 
-// Define the margin, radius, and color scale. Colors are assigned lazily, so
-// if you want deterministic behavior, define a domain for the color scale.
+// définir les dimension
 var m = 15,
     r = 80,
     z = d3.scale.ordinal()
         .range(["#6395FF", "#54CCE8"]);
 
-// Define a pie layout: the pie angle encodes the count of flights. Since our
-// data is stored in CSV, the counts are strings which we coerce to numbers.
+
 var pie = d3.layout.pie()
     .value(function(d) { return +d.count; })
     .sort(function(a, b) { return b.count - a.count; });
 
-// Define an arc generator. Note the radius is specified here, not the layout.
+
 var arc = d3.svg.arc()
     .innerRadius(r / 2)
     .outerRadius(r);
 
 
 
-
-// Create a new scale for radius (based on count)
 var radius = d3.scale.linear()
 	.range([10,r]) // range = la taille minimum-maximum en pixels du rayon de ton donut chart
 var tip = d3.tip()
@@ -35,13 +31,11 @@ var arcHighlight = d3.svg.arc()
     .outerRadius(r*1.05);
 
 
-// Load the flight data asynchronously.
+
 d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
     if (error) throw error;
 
-    // Nest the flight data by origineating airport. Our data has the counts per
-    // Nest the flight data by origineating airport. Our data has the counts per
-    // airport and genre, but we want to group counts by aiport.
+    // Order par origine
     var datas = d3.nest()
         .key(function(d) { return d.origine; })
         .entries(hameau);
@@ -54,7 +48,7 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
     		dd.totalOrigin = totalOrigin
 
     	})
-    })
+    });
 
 
 
@@ -81,8 +75,7 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
    		return radius(d.values[0].totalOrigin) + m
    	}
 
-    // Insert an svg element (with margin) for each airport in our dataset. A
-    // child g element translates the origine to the pie center.
+    // Insérer un element svg
     var div = d3.select("body").selectAll("div")
         .data(datas)
         .enter().append("div") // http://code.google.com/p/chromium/issues/detail?id=98951
@@ -92,7 +85,7 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
         .style("min-width","80px")
         .style("min-height","80px")
 
-    // Add a label for the airport. The `key` comes from the nest operator.
+    // ajout d'un label
     div.append("span")
     	.attr("class","nomhameau")
         .text(function(d) { return d.key; })
@@ -100,7 +93,7 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
         	.attr("class","nombrehameau")
         	.text(function(d) { return  " (" + d.values[0].totalOrigin +")" });
 
-    // Add svg after the label
+
     var svg = div.append("svg")
         //.attr("width", (r + m) * 2)
         //.attr("height", (r + m) * 2)
@@ -110,9 +103,6 @@ d3.csv("../CSV/genreHameau.csv", function(error, hameau) {
         .attr("transform", function(d) { return "translate (" + size(d)  + "," + size(d) + ")" });
 
     svg.call(tip);
-    // Pass the nested per-airport values to the pie layout. The layout computes
-    // the angles for each arc. Another g element will hold the arc and its label.
-
 
     var g = svg.selectAll("g")
         .data(function (d) {
