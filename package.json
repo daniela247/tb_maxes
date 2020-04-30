@@ -10,7 +10,7 @@
     "d3-tip": "^0.9.1",
     "d3-transition": "^1.2.0",
     "graph-scroll": "^1.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "scroller": "0.0.3",
     "waypoints": "^4.0.1",
     "webpack": "^4.35.2"
